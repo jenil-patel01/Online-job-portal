@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employer Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .form-container {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #555;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Employer Registration</h2>
+    <form id="employerForm">
+      <label for="companyName">Company Name</label>
+      <input type="text" id="companyName" name="companyName" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required />
+
+      <label for="industry">Industry</label>
+      <select id="industry" name="industry" required>
+        <option value="">Select Industry</option>
+        <option value="IT/Software">IT/Software</option>
+        <option value="Finance">Finance</option>
+        <option value="Healthcare">Healthcare</option>
+        <option value="Education">Education</option>
+        <option value="Retail">Retail</option>
+        <option value="Manufacturing">Manufacturing</option>
+      </select>
+
+      <input type="submit" value="Register" />
+      <div class="error" id="employerError"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('employerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pwd = this.password.value;
+      const cpwd = this.confirmPassword.value;
+      const errorDiv = document.getElementById('employerError');
+
+      if (pwd !== cpwd) {
+        errorDiv.textContent = 'Passwords do not match!';
+        return;
+      }
+      errorDiv.textContent = '';
+
+      alert('Employer registered successfully!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
